@@ -1,0 +1,99 @@
+extends base
+
+block content
+  .login
+    .container1
+      .forms-container
+        .signin-signup
+          form.sign-in-form(action='')
+            h2.title log in
+            .input-field
+              i.fas.fa-user
+              input#login_email(type='email', placeholder='you@example.com', required='required')
+            .input-field
+              i.fas.fa-lock
+              input#login_password(type='password', placeholder='••••••••', required='required', minlength='8')
+            .password
+              a(href='/forgetpassword')
+                p Forgot password?           
+            button.btn Login
+          
+          form.sign-up-form(action='')
+            h2.title Sign Up
+            .input-field
+              i.fas.fa-user
+              input#signup_name(type='text', placeholder='Username', required='required')
+            .input-field
+              i.far.fa-envelope
+              input#signup_email(type='email', placeholder='you@example.com', required='required')
+            .input-field
+              i.fas.fa-home
+              input#signup_country(placeholder='Your city', list='cities', required='required')
+              datalist#cities
+                option(value='Alexandria')
+                option(value='Aswan')
+                option(value='Asyut')
+                option(value='Beheira')
+                option(value='Beni Suef')
+                option(value='Cairo')
+                option(value='Dakahlia')
+                option(value='Damietta')
+                option(value='Faiyum')
+                option(value='Gharbia')
+                option(value='Giza')
+                option(value='Ismailia	')
+                option(value='Kafr El Sheikh')
+                option(value='Luxor')
+                option(value='Matruh')
+                option(value='Minya')
+                option(value='Monufia')
+                option(value='New Valley')
+                option(value='North Sinai')
+                option(value='Port Said')
+                option(value='Qalyubia')
+                option(value='Qena')
+                option(value='Red Sea')
+                option(value='Sharqia')
+                option(value='Sohag')
+                option(value='South Sinai')
+                option(value='Suez')
+            .input-field
+              i.fas.fa-map-marker-alt
+              input#signup_address(type='text', placeholder='Full Address', required='required')
+            .input-field
+              i.far.fa-id-card
+              input#signup_NID(type='text', placeholder='Your ID', required='required', minlength='14')
+            .input-field
+              i.fas.fa-mobile-alt
+              input#signup_phone(type='text', placeholder='Your phone', required='required', minlength='11')
+            .input-field
+              i.fas.fa-lock
+              input#signup_password(type='password', placeholder='••••••••', required='required', minlength='8')
+            .input-field
+              i.fas.fa-lock
+              input#signup_passwordConfirm(type='password', placeholder='••••••••', required='required', minlength='8')
+            button.btn Sign up
+            
+      .panels-container
+        .panel.left-panel
+          .content
+            h3 Join with Us
+            button#sign-up-btn.btn.transparent(href='/signup') Sign up
+          img.image(src='/images/undraw_voice_interface_eckp.svg', alt='')
+        .panel.right-panel
+          .content
+            h3 One of us ?
+            button#sign-in-btn.btn.transparent(href='/login') log in
+          img.image(src='/images/undraw_online_resume_re_ru7s.svg', alt='')
+  script.
+    const sign_in_btn = document.querySelector('#sign-in-btn');
+    const sign_up_btn = document.querySelector('#sign-up-btn');
+    const container = document.querySelector('.container1');
+    sign_up_btn.addEventListener('click', () => {
+    container.classList.add('sign-up-mode');
+    window.history.pushState(null, '', '/signup')
+    });
+    sign_in_btn.addEventListener('click', () => {
+    container.classList.remove('sign-up-mode');
+    window.history.pushState(null, '', '/login')
+    });

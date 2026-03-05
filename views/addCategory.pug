@@ -1,0 +1,38 @@
+extends base
+
+block content    
+    .add-ad
+        .container5
+            .forms-container
+                .advertisement
+                    form.category_form.ad_form(action='')
+                        .form_ad
+                            label.ad_label(for='name') Category Name
+                            input#name.ad_input(type='text' placeholder='Name' required='required' minlength='3', name= 'name')
+                        .form_ad
+                            input.form__upload(type='file', accept='image/*', id='image', name='image')
+                            label(for='image') Choose new image
+                        .form__group.right
+                            button.prof-btn.addCategoryBtn Add Category
+            .panels-container
+                .panel.left-panel
+                    .content
+                        h2 Add New Category
+                    img.image(src='/images/undraw_post_re_mtr4.svg' alt='password')
+
+    //- script.
+    //-     if (status === 'success') {
+    //-         showAlert('success', 'Product Added')
+    //-         window.location.assign('/addProduct');
+    //-     }
+
+        //- const add = document.querySelector('.addProductBtn');
+        //- add.addEventListener('click', () => {
+        //-     window.location.assign('/addProduct');;
+        //- });
+
+        //- window.location.reload();
+    //-     if (res.data.status === 'success') {
+    //-      showAlert('success', 'Product Added');
+
+    //-     } catch (err) showAlert('error', err.response.data.message);

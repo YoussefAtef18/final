@@ -1,0 +1,35 @@
+extends base
+
+block content
+
+  main.main
+    .user-view
+      .user-view__menu
+        ul.side-nav
+          li
+            a(href='me')
+              i.bi.bi-gear-fill
+              |  Settings
+          li
+            a(href='allProducts')
+              i.bi.bi-ui-checks-grid
+              |  Products
+          li.side-nav--active
+            a(href='allUsers')
+              i.bi.bi-people-fill
+              |  Users
+          li
+            a(href='allOrders')
+              i.bi.bi-list-check
+              |  Orders
+      .user-view__content
+        .user-view__form-container.user-profile
+          .container-users
+            each user in users
+              .card-user
+                .user-info
+                  .user-pic
+                    img(src=`/images/users/${user.photo}` alt=`${user.name}`)
+                  .user-name= user.name
+                .user-manage
+                  button.btn-user.delete Delete

@@ -1,0 +1,97 @@
+extends base
+
+block content    
+  .add-ad
+    .container5
+      .forms-container
+        .advertisement
+          form.ad_form
+            .form_ad
+              label.ad_label(for='ad_title') Advertisement title
+              input#title.ad_input(type='text' value=product.title required='required' minlength='4')
+            .form_ad
+              label.ad_label(for='price') Price
+              input#price.ad_input(type='number' value=product.price required='required' minlength='4')
+            .form_ad
+              label.ad_label(for='Catigories') Main category
+              input#category.ad_input(value=product.category list='Catigory' required='required')
+              datalist#Catigory
+                option(value='Accessories')
+                option(value='Art')
+                option(value='Crochet')
+                option(value='Cooking')
+                option(value='Tailoring')
+                option(value='Wooden crafts')
+                option(value='Other')
+            .form_ad
+              label.ad_label(for='country') Your country
+              input#country.ad_input(value=product.city list='city' required='required')
+              datalist#city
+                option(value='Alexandria')
+                option(value='Aswan')
+                option(value='Asyut')
+                option(value='Beheira')
+                option(value='Beni Suef')
+                option(value='Cairo')
+                option(value='Dakahlia')
+                option(value='Damietta')
+                option(value='Faiyum')
+                option(value='Gharbia')
+                option(value='Giza')
+                option(value='Ismailia')
+                option(value='Kafr El Sheikh')
+                option(value='Luxor')
+                option(value='Matruh')
+                option(value='Minya')
+                option(value='Monufia')
+                option(value='New Valley')
+                option(value='North Sinai')
+                option(value='Port Said')
+                option(value='Qalyubia')
+                option(value='Qena')
+                option(value='Red Sea')
+                option(value='Sharqia')
+                option(value='Sohag')
+                option(value='South Sinai')
+                option(value='Suez')
+            .form_ad
+              label.ad_label(for='description') Description
+              textarea#description.ad_input(placeholder=product.description value=product.description style='height: 90px; resize: none; overflow-y: hidden;' minlength='20')
+            .form_ad
+              label#images.ad_label(for='images') Images
+              .pics
+                div
+                  input.form__upload(type='file', accept='image/*', id="image1", name='images')
+                  label.add_pic(for='image1')
+                    i.bi.bi-plus-circle-fill
+                  if product.images && product.images[0]
+                    img(src=`/images/products/${product.images[0]}` alt="Image 1" class="existing-image")
+
+                div
+                  input.form__upload(type='file', accept='image/*', id="image2", name='images')
+                  label.add_pic(for='image2')
+                    i.bi.bi-plus-circle-fill
+                  if product.images && product.images[1]
+                    img(src=`/images/products/${product.images[1]}` alt="Image 2" class="existing-image")
+
+                div
+                  input.form__upload(type='file', accept='image/*', id="image3", name='images')
+                  label.add_pic(for='image3')
+                    i.bi.bi-plus-circle-fill
+                  if product.images && product.images[2]
+                    img(src=`/images/products/${product.images[2]}` alt="Image 3" class="existing-image")
+
+                div
+                  input.form__upload(type='file', accept='image/*', id="image4", name='images')
+                  label.add_pic(for='image4')
+                    i.bi.bi-plus-circle-fill
+                  if product.images && product.images[3]
+                    img(src=`/images/products/${product.images[3]}` alt="Image 4" class="existing-image")
+
+            .form__group.right
+              button.btn.editProductBtn(data-product-id=`${product.id}`) edit
+      .panels-container
+        .panel.left-panel
+          .content
+            h2 Add Your Advertisement
+          img.image(src='/images/undraw_post_re_mtr4.svg' alt='password')

@@ -1,0 +1,86 @@
+extends base
+
+block content
+  main.main
+    .user-view
+      .user-view__menu
+        ul.side-nav
+          - if (user.role === 'user')
+            li.side-nav--active
+              a(href='me')
+                i.bi.bi-gear-fill
+                |  Settings
+            li
+              a(href='myProducts')
+                i.bi.bi-grid-3x3-gap-fill
+                |  My products
+            li
+              a(href='myOrders')
+                i.bi.bi-cart-check-fill
+                |  My orders
+            li
+              a(href='myReviews')
+                i.bi.bi-chat-fill
+                |  My reviews
+            li
+              a(href='addProduct')
+                i.bi.bi-file-plus-fill
+                |  Add Product
+
+          - if (user.role === 'admin')
+            li.side-nav--active
+              a(href='me')
+                i.bi.bi-gear-fill
+                |  Settings
+            li
+              a(href='allProducts')
+                i.bi.bi-ui-checks-grid
+                |  Products
+            li
+              a(href='allUsers')
+                i.bi.bi-people-fill
+                |  Users
+            li
+              a(href='allOrders')
+                i.bi.bi-list-check
+                |  Orders
+            li
+              a(href='addCategory')
+                ibi.bi-file-plus-fill
+                |  Add Category
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Your account settings
+          form.form1.form-user-data
+            .form__group
+              label.form__label(for='name') Name
+              input#name.form__input(type='text', value=`${user.name}`, required, name='name')
+            .form__group.ma-bt-md
+              label.form__label(for='email') Email address
+              input#email.form__input(type='email', value=`${user.email}`, required, name='email')
+            .form__group.form__photo-upload
+              img.form__user-photo(src=`/images/users/${user.photo}`, alt='User photo')
+              input.form__upload(type='file', accept='image/*', id='photo', name='photo')
+              label(for='photo') Choose new photo            
+
+            .form__group.right
+              button.prof-btn Save settings
+        .line &nbsp;
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Password change
+
+          form.form1.form-user-password
+            .form__group
+              label.form__label(for='password-current') Current password
+              input#password-current.form__input(type='password' placeholder='••••••••' required='required' minlength='8')
+            .form__group
+              label.form__label(for='password') New password
+              input#password.form__input(type='password' placeholder='••••••••' required='required' minlength='8')
+            .form__group.ma-bt-lg
+              label.form__label(for='password-confirm') Confirm password
+              input#password-confirm.form__input(type='password' placeholder='••••••••' required='required' minlength='8')
+            .form__group.right
+              button.prof-btn.btn--save-password Save password
+
+    script.
+      const content= document.getElementById("container");

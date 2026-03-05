@@ -1,0 +1,25 @@
+nav
+  ul.menu
+    a.logo(href='/')
+      img(src='/images/Logo.jpg')
+    li.item
+      a.nav-item(href='/') Home
+    li.item
+      a.nav-item(href='/products') Products
+    li.item
+      a.nav-item(href='/contact') Contact
+    li.toggle
+      span.bars
+    if user    
+      li.item.main
+        a#main-ico.nav__el--logout(href='')  Log out
+        a#main-ico(href='/me')
+          span= user.name.split(' ')[0]
+          img.nav__user-img(src=`/images/users/${user.photo}` alt=`Photo of ${user.name}`)
+      li.item
+        a(href='/cart')
+          i#ico.bi.bi-cart3
+          //- span.counter 0
+    else
+      li.item.main
+        a#main-ico(href='/login') Register  

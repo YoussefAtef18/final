@@ -1,0 +1,19 @@
+extends baseEmail
+
+block content
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+            tbody
+              tr
+                td
+  p city: #{city}
+  p full address: #{address}
+  p my phone: #{phone}
+  p floor number: #{floorNum}
+  p flat number: #{flatNum}
+  each product in products
+    h4= 'product: ' +product.product.title
+    h4= 'quantity: ' +product.quantity

@@ -1,0 +1,72 @@
+extends base
+include _reviewCard
+
+block content
+  .container-product.single-product
+    .row
+      .col-2
+        img#product-img(src=`/images/products/${product.images[0]}`, alt=`${product.title}`)
+        .small-img-row
+          .small-img-col
+            img.small-img(src=`/images/products/${product.images[1]}`, alt='') 
+          .small-img-col
+            img.small-img(src=`/images/products/${product.images[2]}`, alt='') 
+          .small-img-col
+            img.small-img(src=`/images/products/${product.images[3]}`, alt='') 
+      .col-2
+        p Home / product
+        h1 
+          span= `${product.title}`
+        h4 
+          span= `price: ${product.price}`
+        a.btn-add
+          i.bi.bi-cart3.addToCart(data-product-id=`${product.id}`)
+        if user
+          if product.user._id == user.id
+            a.btn(href=(`/editProduct/${product.id}`)) edit
+          else
+            button.btn.addToCart(data-product-id=`${product.id}`) Add to cart
+        else 
+          a.btn_logout(href='/login') log in to buy
+        h3
+          | Product details
+          i.fa.fa-indent
+        br
+        p
+          span= `${product.description}`
+
+  .container
+    h2.special-heading Reviews
+    p Leave your review for the product
+    form.form-rev
+      span.comment  comment: 
+      br
+      textarea#bodyText(name='review' placeholder='Enter Your Comment')
+      br
+      .reviews__rating
+        each star in [1, 2, 3, 4, 5]
+          svg.reviews__star(class=`reviews__star--inactive` data-star=`${star}` onclick=`selectRating(${star})`)
+            use(xlink:href='/images/icons.svg#icon-star')
+      input(type='hidden' id='reviewRating' name='rating' value='0')
+      if user
+        button#addComent.btn-ad.addReviewBtn(data-product=`${product.id}`) Add Comment
+      else 
+        a.btn_logout(href='/login') log in to comment
+
+    .slider-contain
+      .container-slide
+        .swiper.mySwiper
+          .swiper-wrapper
+            each review in product.reviews 
+              +reviewCard(review)
+          .swiper-button-next
+          .swiper-button-prev
+
+  script(src='/jqueryLib.js')
+  script(src='http://unpkg.com/swiper/swiper-bundle.min.js')
+  script(src='/index.js')  // Link the external JavaScript 
+  script.
+    // Wait for the DOM to be ready and then call the function
+    document.addEventListener('DOMContentLoaded', function() {
+      setupProductImageChange();  // Call the image change setup function
+    })

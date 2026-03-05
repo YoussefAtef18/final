@@ -1,0 +1,42 @@
+extends base
+
+block content
+
+  main.main
+    .user-view
+      .user-view__menu
+        ul.side-nav
+          li
+            a(href='me')
+              i.bi.bi-gear-fill
+              |  Settings
+          li
+            a(href='myProducts')
+              i.bi.bi-grid-3x3-gap-fill
+              |  My products
+          li
+            a(href='myOrders')
+              i.bi.bi-cart-check-fill
+              |  My orders
+          li.side-nav--active
+            a(href='myReviews')
+              i.bi.bi-chat-fill
+              |  My reviews
+          li
+            a(href='addProduct')
+              i.bi.bi-file-plus-fill
+              |  Add Product
+
+      .user-view__content
+        .user-view__form-container.user-profile
+          .container-reviews
+            each review in reviews 
+              .review-user
+                .review-info
+                  .pro-pic
+                    img(src=`/images/products/${review.product.images[0]}` alt=`${review.product.title}`)
+                  .user-name= review.product.title
+                p.my-review=`Review: ${review.review}` 
+                .review-manage
+                  //- button.btn-user.update Update
+                  button.btn-user.delete.deleteReviewBtn(data-review-id=`${review.id}`) Delete

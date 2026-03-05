@@ -1,0 +1,34 @@
+extends base
+
+block content
+  
+  .container
+    h2.special-heading  Contact
+    p We are here for you
+    .contact
+      .contact-container
+        .contact-info
+          i.bi.bi-geo-alt-fill
+          span.span-contact Address
+          p Portsaid, Egypt
+        .contact-info
+          i.bi.bi-telephone-fill
+          span.span-contact Phone
+          p 01224959835
+        .contact-info
+          i.bi.bi-envelope-fill
+          span.span-contact E-mail
+          p Crafts2022@gmail.com
+  .complaints
+    .comp-text
+      .comp-img
+        img(src='/images/call.png' alt='')
+      p
+        | For complaints, we are here to satisfy you, leave your message here and we will solve it as soon as possible.
+  
+  form.text
+    .container
+      .input-comp
+        textarea#complaints.text(name='complaints' placeholder='Leave your complaint here ...')
+    .comp-btn
+      button.btn Send

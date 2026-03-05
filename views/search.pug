@@ -1,0 +1,35 @@
+extends base
+
+block content
+  .container
+    h2.special-heading Products
+    p All products are handmade
+    #filter.filters
+      ul
+        li.list(data-filter='all') All
+        li.list(data-filter='Accessoires') Accessories
+        li.list(data-filter='Art') Art
+        li.list(data-filter='Crocet') Crochet
+        li.list(data-filter='Cooking') Cooking
+        li.list(data-filter='Tailor') Tailoring
+        li.list(data-filter='Wooden') Wooden
+        li.list(data-filter='Other') Other
+
+  .products
+    each product in products
+      .pro-card(data-item=`${product.category}`)
+        img(src=`/images/products/${product.images[0]}` alt=`${product.title}`)
+        h5.product-title= product.title
+        .details
+          span= `${product.price} EGP`
+          if user
+            a.btn-add
+              i.bi.bi-cart3.addToCart(data-product-id=`${product.id}`) 
+          else 
+            a.btn-add(href='/login')
+              i.bi.bi-cart3.addToCart
+        a.detail(href=`/products/${product.id}`) Details
+  i.fas.fa-arrow-up
+  script(src='/jqueryLib.js')
+  script(src='/index.js')
+  

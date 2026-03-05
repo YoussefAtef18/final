@@ -1,0 +1,103 @@
+extends base
+
+block content    
+    .add-ad
+        .container5
+            .forms-container
+                .advertisement
+                    form.ad_form
+                        .form_ad
+                            label.ad_label(for='ad_title') Advertisement title
+                            input#title.ad_input(type='text' placeholder='Title' required='required' minlength='4', name= 'title')
+                        .form_ad
+                            label.ad_label(for='price') Price
+                            input#price.ad_input(type='number' placeholder='Price in EGP' required='required' minlength='4', name= 'price')
+                        .form_ad
+                            label.ad_label(for='Catigories') Main category
+                            input#category.ad_input(placeholder='Catigory' list='Catigory' required='required' name= 'category')
+                            datalist#Catigory
+                                option(value='ACCESSORIES') accessories
+                                option(value='ART') art
+                                option(value='CROCET') crocet
+                                option(value='COOKING') cooking
+                                option(value='TAILOR') tailor
+                                option(value='WOODEN') wooden
+                                option(value='OTHER') other
+                        .form_ad
+                            label.ad_label(for='country') Your City
+                            input#country.ad_input(placeholder='city' list='city' required='required' name= 'city')
+                            datalist#city
+                                option(value='Alexandria')
+                                option(value='Aswan')
+                                option(value='Asyut')
+                                option(value='Beheira')
+                                option(value='Beni Suef')
+                                option(value='Cairo')
+                                option(value='Dakahlia')
+                                option(value='Damietta')
+                                option(value='Faiyum')
+                                option(value='Gharbia')
+                                option(value='Giza')
+                                option(value='Ismailia')
+                                option(value='Kafr El Sheikh')
+                                option(value='Luxor')
+                                option(value='Matruh')
+                                option(value='Minya')
+                                option(value='Monufia')
+                                option(value='New Valley')
+                                option(value='North Sinai')
+                                option(value='Port Said')
+                                option(value='Qalyubia')
+                                option(value='Qena')
+                                option(value='Red Sea')
+                                option(value='Sharqia')
+                                option(value='Sohag')
+                                option(value='South Sinai')
+                                option(value='Suez')
+                        .form_ad
+                            label.ad_label(for='description') Description
+                            textarea#description.ad_input(placeholder='Add Your Description' style='height: 90px; resize: none; overflow-y: hidden;' minlength='20' name= 'description')
+                        .form_ad
+                            label#images.ad_label(for='images') images
+                            .pics
+                                div 
+                                    input#image1.form__upload(type='file', accept='image/*', name='images')
+                                    label.add_pic(for='image1')
+                                        i.bi.bi-plus-circle-fill
+                                div 
+                                    input#image2.form__upload(type='file', accept='image/*', name='images')
+                                    label.add_pic(for='image2')
+                                        i.bi.bi-plus-circle-fill
+                                div 
+                                    input#image3.form__upload(type='file', accept='image/*', name='images')
+                                    label.add_pic(for='image3')
+                                        i.bi.bi-plus-circle-fill
+                                div 
+                                    input#image4.form__upload(type='file', accept='image/*', name='images')
+                                    label.add_pic(for='image4')
+                                        i.bi.bi-plus-circle-fill
+                               
+                        .form__group.right
+                            button.btn.addProductBtn() Post
+            .panels-container
+                .panel.left-panel
+                    .content
+                        h2 Add Your Advertisement
+                    img.image(src='/images/undraw_post_re_mtr4.svg' alt='password')
+
+    //- script.
+    //-     if (status === 'success') {
+    //-         showAlert('success', 'Product Added')
+    //-         window.location.assign('/addProduct');
+    //-     }
+
+        //- const add = document.querySelector('.addProductBtn');
+        //- add.addEventListener('click', () => {
+        //-     window.location.assign('/addProduct');;
+        //- });
+
+        //- window.location.reload();
+    //-     if (res.data.status === 'success') {
+    //-      showAlert('success', 'Product Added');
+
+    //-     } catch (err) showAlert('error', err.response.data.message);

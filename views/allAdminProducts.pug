@@ -1,0 +1,36 @@
+extends base
+
+block content
+
+  main.main
+    .user-view
+      .user-view__menu
+        ul.side-nav
+          li
+            a(href='me')
+              i.bi.bi-gear-fill
+              |  Settings
+          li.side-nav--active
+            a(href='allProducts')
+              i.bi.bi-ui-checks-grid
+              |  Products
+          li
+            a(href='allUsers')
+              i.bi.bi-people-fill
+              |  Users
+          li
+            a(href='allOrders')
+              i.bi.bi-list-check
+              |  Orders
+      .user-view__content
+        .user-view__form-container.user-profile
+          .container-orders
+            each product in products
+              .profile-order
+                img(src=`/images/products/${product.images[0]}` alt=`${product.title}`)
+                .details-order
+                  h5.product-title= product.title
+                  .price-button
+                    span= `${product.price} EGP`
+                    button.delete Delete
+

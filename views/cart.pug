@@ -1,0 +1,130 @@
+extends base
+
+block content
+  //- // start content
+  .container-cart
+    h1.heading-txt
+      //- // <ion-icon name = "cart-outline"></ion-icon>
+      i.bi.bi-cart3
+      |          Shopping cart
+    .item-flex
+      //- // checkout section
+      //- // checkout
+      .checkout
+        h2.section-heading Payment Details
+        .payment-form
+          .payment-method
+            button#btnCredit.method.checkoutOrder
+              i.bi.bi-credit-card-fill.cart-icons
+              span Credit Card
+              i.bi.bi-check-circle-fill.checkmark
+            button#btnAddress.method.selected
+              i.bi.bi-house-door-fill.cart-icons
+              span Cash on delivery
+              i.bi.bi-check-circle-fill.checkmark
+          //- // div  credit images
+          .payment-imgs
+            img(src='images/visa.png' alt='' width='60px' height='40px')
+            img(src='images/mastercard-logo.png' alt='' width='60px' height='60px')
+            img(src='images/pay.png' alt='' width='70px' height='40px')
+          //- // address f0rm
+          form#address.form-cart
+            .cardholder
+              label.label-default(for='cardholder') Your City
+              input#city.input-cart(list='cities' required='required')
+              datalist#cities
+                option(value='Alexandria')
+                option(value='Aswan')
+                option(value='Asyut')
+                option(value='Beheira')
+                option(value='Beni Suef')
+                option(value='Cairo')
+                option(value='Dakahlia')
+                option(value='Damietta')
+                option(value='Faiyum')
+                option(value='Gharbia')
+                option(value='Giza')
+                option(value='Ismailia')
+                option(value='Kafr El Sheikh')
+                option(value='Luxor')
+                option(value='Matruh')
+                option(value='Minya')
+                option(value='Monufia')
+                option(value='New Valley')
+                option(value='North Sinai')
+                option(value='Port Said')
+                option(value='Qalyubia')
+                option(value='Qena')
+                option(value='Red Sea')
+                option(value='Sharqia')
+                option(value='Sohag')
+                option(value='South Sinai')
+                option(value='Suez')
+            .card-number
+              label.label-default(for='address') Your Full Address
+              input#address.input-cart(type='text' name='card-address')
+            .input-flex
+              .expire-date
+                label.label-default(for='floor') Floor Number
+                .input-flex
+                  input#floor.input-cart(type='number' name='floor')
+              .cvv.expire-date
+                label.label-default(for='flat') Flat Number
+                .input-flex
+                  input#flat.input-cart(type='number' name='flat')
+            .phone-num
+              label.label-default(for='phone') Phone number
+              input#phone.input-cart(type='text' value=`${user.phone}` name='phone')
+            button.onDelivery.btn-cart.margin-top
+              b Pay
+              span#payAmount 0
+
+      .cart
+        if products
+          #cart-pass.cart-item-box
+            h2.section-heading Order Summery
+              each product in products
+                .product-card
+                  .card-cart
+                    .img-box1
+                      img.product-img(src=`/images/products/${product.productId.images[0]}` alt=`${product.productId.title}` width='80px')
+                    .detail
+                      h4.product-n=product.productId.title
+                      .wrapper
+                        .product-qty
+                          button#decrement
+                            i.bi.bi-dash 
+                          span#quantity=product.productId.quantity
+                          button#increment
+                            i.bi.bi-plus
+                        .price
+                          span#price=product.productId.price 
+                          |  EGP
+                    button#product-colse-btn.remove
+                      i.bi.bi-x(data-product-id=`${product.productId.id}`)
+              else
+                //- // empty cart
+                .text-empty
+                  span Your
+                  span cart
+                  span is
+                  span empty
+                img(src='images/empty cart1.gif' alt='')
+              //- // end empty cart
+        .wrapper
+          .note
+            label.label-default(for='note')
+              | Leave your note to seller ?
+            .wrapper-flex
+              textarea#customer-note.input-default(name='note')
+        .amount
+          .Total
+            span Total
+            span
+              span#total 0
+              |  EGP
+       
+  script(src='/cart.js')
+  script(src='/index.js')
+  script(src='https://js.stripe.com/v3/')
+
